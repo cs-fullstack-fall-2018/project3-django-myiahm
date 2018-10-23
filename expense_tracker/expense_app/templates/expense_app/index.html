@@ -23,5 +23,11 @@
 {% else %}
 <p>No Users Avaliable.</p>
 {% endif %}
+
+{% if user_deposits %}
+<ul>
+    {% for eachDeposit in user_deposits %}
+    <li>{{ eachDeposit.amount}}</li>
+</ul>
 <script src="{% static 'forms_app/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'forms_app/bootstrap.js' %}"></script>
