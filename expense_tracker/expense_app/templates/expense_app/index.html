@@ -1,33 +1,39 @@
+{% extends './base.html' %}
 
-{# Testing here #}
-{% load static %}
-<link rel="stylesheet" href="{% static 'forms_app/bootstrap.css' %}">
-<div class="jumbotron">
-    <p>User DataBase</p>
+{% block content %}
+<div class=" text-center">
+    {% if user_list %}
 
-    {% if user.is_authenticated %}
-    User: {{ user.get_username }}
-    {% else %}
-    Users is not logged in
-    {% endif %}
-</div>
-{% if user_list %}
 <ul>
-    {% for eachUser in user_list %}
-    <li>{{ eachUser.name }}</li>
-    <li>{{ eachUser.emergency }}</li>
+    <li>{{ user_list.name }}</li>
+    <li>{{ user_list.emergency }}</li>
     <hr/>
 
-    {% endfor %}
 </ul>
 {% else %}
 <p>No Users Avaliable.</p>
 {% endif %}
-
+<button href="{% url 'deposit' pk=user_list.pk %}"> Deposit </button>
 {% if user_deposits %}
 <ul>
-    {% for eachDeposit in user_deposits %}
-    <li>{{ eachDeposit.amount}}</li>
+    {% for eachDEPO in user_deposits %}
+    <li>{{ eachDEPO.amount}}</li>
+    <hr/>
+    {% endfor %}
 </ul>
-<script src="{% static 'forms_app/jquery-3.3.1.min.js' %}"></script>
-<script src="{% static 'forms_app/bootstrap.js' %}"></script>
+{% else %}
+<p> No User deposits. </p>
+{% endif %}
+<button href="{% url 'withdraw' pk=user_list.pk %}">Withdrawal</button>
+{% if user_withdarawls %}
+<ul>
+    {% for eachWithdrawl in user_withdarawls %}
+    <li>{{ eachWithdrawl.amount}}</li>
+    <hr/>
+    {% endfor %}
+</ul>
+{% else %}
+<p> No User withdrawals </p>
+{% endif %}
+</div>
+{% endblock %}

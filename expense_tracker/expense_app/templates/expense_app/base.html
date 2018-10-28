@@ -1,0 +1,26 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'forms_app/bootstrap.css' %}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<div class="jumbotron text-center">
+    <h1>Expense Tracker.Com</h1>
+    <h3>We track your money so your dont have to!</h3>
+
+    <h3><a href="{% url 'add' %}"><em>Don't be a lookie-loo click here to start tracking your money too!</em></a></h3>
+    <h3><a href= "{% url 'login' %}"><em>If you already know how great we are click here and log in </em></a></h3>
+    <hr/>
+    <h3><a href="{% url 'logout' %}">Logout</a></h3>
+
+
+    {% if user.is_authenticated %}
+    Welcome : {{ user.get_username }}
+    {% else %}
+    Users is not logged in
+    {% endif %}
+</div>
+<div>
+    {% block title %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+</div>
