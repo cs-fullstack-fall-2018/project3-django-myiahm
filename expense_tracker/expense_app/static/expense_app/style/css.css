@@ -1,0 +1,20 @@
+body
+{
+background-color: darkturquoise;
+}
+div
+{
+    background-color: peachpuff;
+    border-radius: 25px;
+
+}
+
+.jumbotron
+{
+    color: white;
+    background-color: paleturquoise;
+}
+h3
+{
+    color: white;
+}
